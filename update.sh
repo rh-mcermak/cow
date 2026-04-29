@@ -21,7 +21,7 @@ s=$(($(date +%s) - 1770000000))
 cat $bd/cow.spec | sed "s/STAMP/$s/" | sed "s/HASH/$h/" >  $bd/rpmbuild/SPECS/cow.spec
 
 pushd rpmbuild/SPECS
-rpmbuild --define "_topdir $bd/rpmbuild" -bs cow.spec
+rpmbuild --define "_topdir $bd/rpmbuild" --define "dist .fc45" -bs cow.spec
 popd
 
-cp $bd/rpmbuild/SRPMS/cow*fc43.src.rpm ~/work/last
+cp $bd/rpmbuild/SRPMS/cow*.src.rpm ~/work/last

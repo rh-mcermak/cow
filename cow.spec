@@ -4,64 +4,71 @@ Release:        0.STAMP.HASH%{?dist}
 Summary:        Cow
 
 License:        MIT
-URL:            https://github.com/rh-mcermak/cow.git
+URL:            https://codeberg.org/thomasadam/cow
 
-Source0:        https://github.com/rh-mcermak/cow/blob/main/cow-1.0.tar.gz
+Source0:        cow-1.0.tar.gz
 
 BuildRequires: cairo
 BuildRequires: clang
-BuildRequires: dnf
-BuildRequires: dunst
-BuildRequires: grim
-BuildRequires: install
 BuildRequires: libbsd
 BuildRequires: libbsd-devel
 BuildRequires: libevdev-devel
-BuildRequires: libevdev-utils
 BuildRequires: libinput-devel
 BuildRequires: libwayland-client
 BuildRequires: libxkbcommon
 BuildRequires: libxkbcommon-devel
-BuildRequires: libxkbcommon-utils
 BuildRequires: meson
 BuildRequires: pango
-BuildRequires: pangocairo
 BuildRequires: pango-devel
-BuildRequires: pasystray
-BuildRequires: river
-BuildRequires: seat
-BuildRequires: seatd
-BuildRequires: slurp
-BuildRequires: sudo
-BuildRequires: /usr/bin/wl-clip-persist
-BuildRequires: waybar
-BuildRequires: wayland-client-devel
 BuildRequires: wayland-devel
-BuildRequires: wayland-protocols
 BuildRequires: wayland-protocols-devel
-BuildRequires: wl-clipboard
-BuildRequires: wl-clip-persist
 BuildRequires: wlroots-devel
-BuildRequires: xkbcommon
-BuildRequires: xterm
 BuildRequires: zig
+
+Requires: dunst
+Requires: grim
+Requires: libevdev-utils
+Requires: libxkbcommon-utils
+Requires: pasystray
+Requires: river
+Requires: seatd
+Requires: slurp
+Requires: waybar
+Requires: wl-clipboard
+Requires: wl-clip-persist
+Requires: xterm
+
 
 %description
 Cow
 
 %prep
-%autosetup
+%setup -n cow-1.0
 
 %build
-make
+export CFLAGS="%{optflags} -Wno-error=format-security"
+meson setup build --prefix=/usr
+meson compile -C build 
 
 %install
-mkdir -p %{buildroot}/usr/bin
-install -m0755 mypkg %{buildroot}/usr/bin/mypkg
+meson install -C build --destdir %{buildroot}
+
 
 %files
-/usr/bin/mypkg
+/usr/bin/cow
+/usr/bin/cow-start
+/usr/bin/cowbar
+/usr/bin/cowpager
+/usr/bin/moocow
+/usr/etc/cow/cow.conf
+/usr/share/wayland-sessions/cow.desktop
 
 %changelog
-* Fri Apr 24 2026 You <mcermak@example.com> - 0-1
-- Initial build
+* Fri Apr 24 2026 You <mcermak@example.com> - cow-1.0
+- Install steps:
+  sudo systemctl start seatd
+  sudo usermod -G seat $USER
+  install config files per
+  https://codeberg.org/thomasadam/cow ---> Where to Start
+
+  
