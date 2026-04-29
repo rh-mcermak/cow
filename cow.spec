@@ -1,17 +1,53 @@
 Name:           cow
-Version:        0
-Release:        1%{?dist}
+Version:        1
+Release:        0.STAMP.HASH%{?dist}
 Summary:        Cow
 
 License:        MIT
 URL:            https://github.com/rh-mcermak/cow.git
 
-Source0:        %{name}-%{version}.tar.gz
+Source0:        https://github.com/rh-mcermak/cow/blob/main/cow-1.0.tar.gz
 
-BuildRequires:  gcc, make
+BuildRequires: cairo
+BuildRequires: clang
+BuildRequires: dnf
+BuildRequires: dunst
+BuildRequires: grim
+BuildRequires: install
+BuildRequires: libbsd
+BuildRequires: libbsd-devel
+BuildRequires: libevdev-devel
+BuildRequires: libevdev-utils
+BuildRequires: libinput-devel
+BuildRequires: libwayland-client
+BuildRequires: libxkbcommon
+BuildRequires: libxkbcommon-devel
+BuildRequires: libxkbcommon-utils
+BuildRequires: meson
+BuildRequires: pango
+BuildRequires: pangocairo
+BuildRequires: pango-devel
+BuildRequires: pasystray
+BuildRequires: river
+BuildRequires: seat
+BuildRequires: seatd
+BuildRequires: slurp
+BuildRequires: sudo
+BuildRequires: /usr/bin/wl-clip-persist
+BuildRequires: waybar
+BuildRequires: wayland-client-devel
+BuildRequires: wayland-devel
+BuildRequires: wayland-protocols
+BuildRequires: wayland-protocols-devel
+BuildRequires: wl-clipboard
+BuildRequires: wl-clip-persist
+BuildRequires: wlroots-devel
+BuildRequires: xkbcommon
+BuildRequires: xterm
+BuildRequires: zig
 
 %description
-Example package built from upstream git.
+Cow
 
 %prep
 %autosetup
