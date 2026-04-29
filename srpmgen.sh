@@ -4,24 +4,50 @@ set -xe
 
 bd=$(dirname $(readlink -f $0))
 
-rm -rf $bd/rpmbuild
-mkdir -p $bd/rpmbuild/{SPECS,SOURCES}
+# Allow dist tag to be overridden via environment
+DIST_TAG="${DIST_TAG:-fc45}"
+WORK_DIR="${WORK_DIR:-$HOME/work/last}"
 
-rm -rf $bd/src
-git clone https://codeberg.org/thomasadam/cow.git src
-pushd src
-git archive --format=tar.gz --prefix=cow-1.0/ -o ../rpmbuild/SOURCES/cow-1.0.tar.gz HEAD
-# Short git hash
+# Ensure output directory exists
+test -d "$WORK_DIR" || {
+    echo "ERROR: Output directory $WORK_DIR doesn't exist"
+    exit 1
+}
+
+# Clean and setup build directories
+rm -rf "$bd/rpmbuild"
+mkdir -p "$bd/rpmbuild"/{SPECS,SOURCES}
+
+# Clone or update source
+if [ -d "$bd/src" ]; then
+    echo "Updating existing source..."
+    pushd "$bd/src"
+    git fetch origin
+    git reset --hard origin/main
+    popd
+else
+    echo "Cloning fresh source..."
+    git clone https://codeberg.org/thomasadam/cow.git "$bd/src" || {
+        echo "ERROR: Failed to clone upstream repository"
+        exit 1
+    }
+fi
+
+pushd "$bd/src"
+git archive --format=tar.gz --prefix=cow-1.0/ -o "../rpmbuild/SOURCES/cow-1.0.tar.gz" HEAD
 h=$(git rev-parse --short HEAD)
 popd
 
-# Kind of timestamp ensuring clean upgrade path
+# Timestamp for upgrade path
 s=$(($(date +%s) - 1770000000))
 
-cat $bd/cow.spec | sed "s/STAMP/$s/" | sed "s/HASH/$h/" >  $bd/rpmbuild/SPECS/cow.spec
+# Generate spec with substitutions
+sed -e "s/STAMP/$s/" -e "s/HASH/$h/" "$bd/cow.spec" > "$bd/rpmbuild/SPECS/cow.spec"
 
-pushd rpmbuild/SPECS
-rpmbuild --define "_topdir $bd/rpmbuild" --define "dist .fc45" -bs cow.spec
+# Build SRPM
+pushd "$bd/rpmbuild/SPECS"
+rpmbuild --define "_topdir $bd/rpmbuild" --define "dist .$DIST_TAG" -bs cow.spec
 popd
 
-cp $bd/rpmbuild/SRPMS/cow*.src.rpm ~/work/last
+# Copy to output location
+cp "$bd/rpmbuild/SRPMS/cow"*.src.rpm "$WORK_DIR/"

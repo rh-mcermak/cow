@@ -1,11 +1,10 @@
 Name:           cow
 Version:        1
 Release:        0.STAMP.HASH%{?dist}
-Summary:        Cow
+Summary:        Compositor on Wayland - A stacking window manager
 
 License:        MIT
 URL:            https://codeberg.org/thomasadam/cow
-
 Source0:        cow-1.0.tar.gz
 
 BuildRequires: cairo
@@ -40,7 +39,10 @@ Requires: xterm
 
 
 %description
-Cow
+CoW (Compositor on Wayland) is a stacking window manager for Wayland.
+CoW aims to provide the look-and-feel of FVWM and MWM with a sensible
+configuration mechanism using dedicated commands that can be used both
+as a configuration file and via IPC at runtime.
 
 %prep
 %setup -n cow-1.0
@@ -64,11 +66,8 @@ meson install -C build --destdir %{buildroot}
 /usr/share/wayland-sessions/cow.desktop
 
 %changelog
-* Fri Apr 24 2026 You <mcermak@example.com> - cow-1.0
-- Install steps:
-  sudo systemctl start seatd
-  sudo usermod -G seat $USER
-  install config files per
-  https://codeberg.org/thomasadam/cow ---> Where to Start
+* Wed Apr 29 2026 Martin Cermak <mcermak@redhat.com> - 1-0.7492120.5885e05
+- Automated build from upstream git commit 5885e05
 
-  
+* Sat Apr 25 2026 Martin Cermak <mcermak@redhat.com> - 1-0
+- Initial package for Fedora
