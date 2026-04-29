@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -xe
+
 pushd $(mktemp -d)
 git clone https://github.com/rh-mcermak/cow.git
 rm -f ~/.config/cow
