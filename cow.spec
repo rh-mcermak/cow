@@ -66,7 +66,7 @@ meson install -C build --destdir %{buildroot}
 /usr/share/wayland-sessions/cow.desktop
 
 %changelog
-* Wed Apr 29 2026 Martin Cermak <mcermak@redhat.com> - 1-0.7492120.5885e05
+* Wed Apr 29 2026 Martin Cermak <mcermak@redhat.com> - 1-0.7493386.5885e05
 - Automated build from upstream git commit 5885e05
 
 * Sat Apr 25 2026 Martin Cermak <mcermak@redhat.com> - 1-0
