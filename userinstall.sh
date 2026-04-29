@@ -35,4 +35,4 @@ EOF
 
 sudo cp cow.repo /etc/yum.repos.d/
 sudo yum clean all
-sudo yum install cow
+sudo yum -y install cow
