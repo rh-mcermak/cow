@@ -8,7 +8,7 @@ rm -rf ~/.config/waybar
 cp -r cow/config/waybar ~/.config
 popd
 
-cat >cow.repo <EOF
+cat >cow.repo <<EOF
 [copr:copr.fedorainfracloud.org:mcermak:cow]
 name=Copr repo for cow owned by mcermak
 baseurl=https://download.copr.fedorainfracloud.org/results/mcermak/cow/fedora-$releasever-$basearch/
