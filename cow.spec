@@ -49,7 +49,7 @@ as a configuration file and via IPC at runtime.
 
 %build
 export CFLAGS="%{optflags} -Wno-error=format-security"
-meson setup build --prefix=/usr
+meson setup build --prefix=/usr -Detcprefix=/
 meson compile -C build 
 
 %install
@@ -67,6 +67,9 @@ meson install -C build --destdir %{buildroot}
 %{_datadir}/wayland-sessions/cow.desktop
 
 %changelog
+* Thu Apr 30 2026 Martin Cermak <mcermak@redhat.com> - 1-0.7572216.8a1ce82
+- Automated build from upstream git commit 8a1ce82
+
 * Wed Apr 29 2026 Martin Cermak <mcermak@redhat.com> - 1-0.7493386.5885e05
 - Automated build from upstream git commit 5885e05
 
