@@ -11,15 +11,4 @@ CoW is a stacking window manager inspired by FVWM and MWM.
 
 ## Quick User Installation
 
-```bash
-curl https://raw.githubusercontent.com/rh-mcermak/cow/refs/heads/main/userinstall.sh | bash
-```
-
-Or download and inspect the script first (recommended):
-
-```bash
-wget https://raw.githubusercontent.com/rh-mcermak/cow/refs/heads/main/userinstall.sh
-less userinstall.sh  # review the script
-bash userinstall.sh
-```
-
+- **COPR**: https://copr.fedorainfracloud.org/coprs/mcermak/cow/
