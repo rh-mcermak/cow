@@ -57,13 +57,14 @@ meson install -C build --destdir %{buildroot}
 
 
 %files
-/usr/bin/cow
-/usr/bin/cow-start
-/usr/bin/cowbar
-/usr/bin/cowpager
-/usr/bin/moocow
-/usr/etc/cow/cow.conf
-/usr/share/wayland-sessions/cow.desktop
+%{_bindir}/cow
+%{_bindir}/cow-start
+%{_bindir}/cowbar
+%{_bindir}/cowpager
+%{_bindir}/moocow
+%{_bindir}/cowident
+%{_sysconfdir}/cow/cow.conf
+%{_datadir}/wayland-sessions/cow.desktop
 
 %changelog
 * Wed Apr 29 2026 Martin Cermak <mcermak@redhat.com> - 1-0.7493386.5885e05
