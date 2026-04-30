@@ -1,11 +1,9 @@
-# CoW Window Manager - Fedora Packaging
+# CoW Window Manager - Fedora Packaging (COPR)
 
 CoW (Compositor on Wayland) is a stacking window manager for Wayland.    
 It aims to provide the look-and-feel of FVWM and MWM.    
 
-## About CoW
-
-CoW is a stacking window manager inspired by FVWM and MWM.
+## References
 
 - **Upstream**: https://codeberg.org/thomasadam/cow
 - **Wiki**: https://codeberg.org/thomasadam/cow/wiki/Home
