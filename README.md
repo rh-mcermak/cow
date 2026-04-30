@@ -1,6 +1,7 @@
 # CoW Window Manager - Fedora Packaging
 
-This repository contains Fedora packaging scripts and configuration for **CoW** (Compositor on Wayland), a stacking window manager for Wayland.
+CoW (Compositor on Wayland) is a stacking window manager for Wayland.    
+It aims to provide the look-and-feel of FVWM and MWM.    
 
 ## About CoW
 
