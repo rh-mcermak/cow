@@ -42,6 +42,15 @@ popd
 s=$(($(date +%s) - 1770000000))
 
 # Generate spec with substitutions
+sed -i "0,/%changelog/{/%changelog/a\
+
+}" "$bd/cow.spec"
+sed -i "0,/%changelog/{/%changelog/a\
+- Automated build from upstream git commit $h
+}" "$bd/cow.spec"
+sed -i "0,/%changelog/{/%changelog/a\
+* $(date '+%a %b %d %Y') Martin Cermak <mcermak@redhat.com> - 1-0.$s.$h
+}" "$bd/cow.spec"
 sed -e "s/STAMP/$s/" -e "s/HASH/$h/" "$bd/cow.spec" > "$bd/rpmbuild/SPECS/cow.spec"
 
 # Build SRPM
