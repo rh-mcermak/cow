@@ -3,7 +3,7 @@ Version:        1
 Release:        0.STAMP.HASH%{?dist}
 Summary:        Compositor on Wayland - A stacking window manager
 
-License:        MIT
+License:        ISC
 URL:            https://codeberg.org/thomasadam/cow
 Source0:        cow-1.0.tar.gz
 
@@ -67,6 +67,9 @@ export CFLAGS="%{optflags} -Wno-error=format-security"
 %{_datadir}/wayland-sessions/cow.desktop
 
 %changelog
+* Wed May 06 2026 Martin Cermak <mcermak@redhat.com> - 1-0.8076157.8a1ce82
+- Automated build from upstream git commit 8a1ce82
+
 * Sun May 03 2026 Martin Cermak <mcermak@redhat.com> - 1-0.7844861.8a1ce82
 - Automated build from upstream git commit 8a1ce82
 

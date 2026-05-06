@@ -53,6 +53,9 @@ sed -i "0,/%changelog/{/%changelog/a\
 }" "$bd/cow.spec"
 sed -e "s/STAMP/$s/" -e "s/HASH/$h/" "$bd/cow.spec" > "$bd/rpmbuild/SPECS/cow.spec"
 
+# Edit the spec
+vim $bd/rpmbuild/SPECS/cow.spec || exit  # :cq
+
 # Build SRPM
 pushd "$bd/rpmbuild/SPECS"
 rpmbuild --define "_topdir $bd/rpmbuild" --define "dist .$DIST_TAG" -bs cow.spec
