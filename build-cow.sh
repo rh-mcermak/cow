@@ -2,6 +2,13 @@
 
 set -xe
 
+# Check if there's a new upstream update
+nhash=$(git ls-remote https://codeberg.org/thomasadam/cow.git HEAD | cut -c1-7)
+if repoquery --disablerepo=\* --enablerepo=\*cow\* --quiet --location cow | grep -F "$nhash"; then
+   echo "Cow repo is up to date."
+   exit 0
+fi
+
 bd=$(dirname $(readlink -f $0))
 
 # Allow dist tag to be overridden via environment
