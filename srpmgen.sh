@@ -6,13 +6,6 @@ bd=$(dirname $(readlink -f $0))
 
 # Allow dist tag to be overridden via environment
 DIST_TAG="${DIST_TAG:-fc45}"
-WORK_DIR="${WORK_DIR:-$HOME/work/last}"
-
-# Ensure output directory exists
-test -d "$WORK_DIR" || {
-    echo "ERROR: Output directory $WORK_DIR doesn't exist"
-    exit 1
-}
 
 # Clean and setup build directories
 rm -rf "$bd/rpmbuild"
@@ -61,5 +54,6 @@ pushd "$bd/rpmbuild/SPECS"
 rpmbuild --define "_topdir $bd/rpmbuild" --define "dist .$DIST_TAG" -bs cow.spec
 popd
 
-# Copy to output location
-cp "$bd/rpmbuild/SRPMS/cow"*.src.rpm "$WORK_DIR/"
+# Build it
+# https://copr.fedorainfracloud.org/api/
+copr-cli build mcermak/cow  "$bd/rpmbuild/SRPMS/cow"*.src.rpm

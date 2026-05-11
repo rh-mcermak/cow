@@ -67,6 +67,18 @@ export CFLAGS="%{optflags} -Wno-error=format-security"
 %{_datadir}/wayland-sessions/cow.desktop
 
 %changelog
+* Mon May 11 2026 Martin Cermak <mcermak@redhat.com> - 1-0.8526093.db394ca
+- Automated build from upstream git commit db394ca
+
+* Mon May 11 2026 Martin Cermak <mcermak@redhat.com> - 1-0.8525577.db394ca
+- Automated build from upstream git commit db394ca
+
+* Mon May 11 2026 Martin Cermak <mcermak@redhat.com> - 1-0.8482519.db394ca
+- Automated build from upstream git commit db394ca
+
+* Thu May 07 2026 Martin Cermak <mcermak@redhat.com> - 1-0.8184858.0b26e18
+- Automated build from upstream git commit 0b26e18
+
 * Wed May 06 2026 Martin Cermak <mcermak@redhat.com> - 1-0.8076157.8a1ce82
 - Automated build from upstream git commit 8a1ce82
 
