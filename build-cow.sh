@@ -4,6 +4,7 @@ set -xe
 
 # Check if there's a new upstream update
 nhash=$(git ls-remote https://codeberg.org/thomasadam/cow.git HEAD | cut -c1-7)
+dnf clean metadata --disablerepo=\* --enablerepo=\*cow\*
 if repoquery --disablerepo=\* --enablerepo=\*cow\* --quiet --location cow | grep -F "$nhash"; then
    echo "Cow repo is up to date."
    exit 0
