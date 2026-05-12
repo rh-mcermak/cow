@@ -6,6 +6,7 @@ Summary:        Compositor on Wayland - A stacking window manager
 License:        ISC
 URL:            https://codeberg.org/thomasadam/cow
 Source0:        cow-1.0.tar.gz
+Patch0:         logging.patch
 
 BuildRequires: cairo
 BuildRequires: clang
@@ -46,6 +47,7 @@ as a configuration file and via IPC at runtime.
 
 %prep
 %setup -n cow-1.0
+%patch -P0 -p1
 
 %build
 export CFLAGS="%{optflags} -Wno-error=format-security"

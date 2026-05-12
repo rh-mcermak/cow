@@ -4,8 +4,8 @@ set -xe
 
 # Check if there's a new upstream update
 nhash=$(git ls-remote https://codeberg.org/thomasadam/cow.git HEAD | cut -c1-7)
-dnf clean metadata --disablerepo=\* --enablerepo=\*cow\*
-if repoquery --disablerepo=\* --enablerepo=\*cow\* --quiet --location cow | grep -F "$nhash"; then
+dnf clean all --disablerepo=\* --enablerepo=\*cow\*
+if dnf repoquery '--disablerepo=*' '--enablerepo=*cow*' --quiet --location --srpm --available --latest-limit=15 cow | grep -F "$nhash"; then
    echo "Cow repo is up to date."
    exit 0
 fi
@@ -38,6 +38,8 @@ pushd "$bd/src"
 git archive --format=tar.gz --prefix=cow-1.0/ -o "../rpmbuild/SOURCES/cow-1.0.tar.gz" HEAD
 h=$(git rev-parse --short HEAD)
 popd
+
+cp "$bd/logging.patch" "$bd/rpmbuild/SOURCES/"
 
 # Timestamp for upgrade path
 s=$(($(date +%s) - 1770000000))
