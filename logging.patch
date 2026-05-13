@@ -1,13 +1,17 @@
 diff --git a/tools/start.sh b/tools/start.sh
-index 8722f95..a2bb143 100755
+index 8722f95..c93145f 100755
 --- a/tools/start.sh
 +++ b/tools/start.sh
-@@ -7,7 +7,7 @@
+@@ -7,8 +7,11 @@
  #   export XKB_DEFAULT_LAYOUT
  
  # Start cow.
 -cow &
-+cow |& tee $(rpm -q --queryformat='/tmp/%{name}-%{version}-%{release}' cow)-started-$(date +%s).log &
++rm -f /tmp/cow.log
++l="$(rpm -q --queryformat='/tmp/%{name}-%{version}-%{release}' cow)-started-$(date +%s).log"
++cow |& tee $l &
  sleep 1
++ln -s $l /tmp/cow.log
  
  CONFIG_PATH=${XDG_CONFIG_HOME:-$HOME/.config}
+ 

@@ -35,7 +35,8 @@ Requires: seatd
 Requires: slurp
 Requires: waybar
 Requires: wl-clipboard
-Requires: wl-clip-persist
+# Skip wl-clip-persist as it seems broken on Fedora.
+# Requires: wl-clip-persist
 Requires: xterm
 
 
@@ -69,16 +70,13 @@ export CFLAGS="%{optflags} -Wno-error=format-security"
 %{_datadir}/wayland-sessions/cow.desktop
 
 %changelog
+* Wed May 13 2026 Martin Cermak <mcermak@redhat.com> - 1-0.8701343.1871a5d
+- Automated build from upstream git commit 1871a5d
+
 * Tue May 12 2026 Martin Cermak <mcermak@redhat.com> - 1-0.8621417.2307f6a
 - Automated build from upstream git commit 2307f6a
 
 * Mon May 11 2026 Martin Cermak <mcermak@redhat.com> - 1-0.8526093.db394ca
-- Automated build from upstream git commit db394ca
-
-* Mon May 11 2026 Martin Cermak <mcermak@redhat.com> - 1-0.8525577.db394ca
-- Automated build from upstream git commit db394ca
-
-* Mon May 11 2026 Martin Cermak <mcermak@redhat.com> - 1-0.8482519.db394ca
 - Automated build from upstream git commit db394ca
 
 * Thu May 07 2026 Martin Cermak <mcermak@redhat.com> - 1-0.8184858.0b26e18

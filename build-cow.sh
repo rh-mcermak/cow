@@ -7,7 +7,7 @@ nhash=$(git ls-remote https://codeberg.org/thomasadam/cow.git HEAD | cut -c1-7)
 dnf clean all --disablerepo=\* --enablerepo=\*cow\*
 if dnf repoquery '--disablerepo=*' '--enablerepo=*cow*' --quiet --location --srpm --available --latest-limit=15 cow | grep -F "$nhash"; then
    echo "Cow repo is up to date."
-   exit 0
+   #exit 0
 fi
 
 bd=$(dirname $(readlink -f $0))
