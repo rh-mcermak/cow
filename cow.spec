@@ -3,6 +3,8 @@ Version:        1
 Release:        0.STAMP.HASH%{?dist}
 Summary:        Compositor on Wayland - A stacking window manager
 
+Obsoletes:      testcow
+
 License:        ISC
 URL:            https://codeberg.org/thomasadam/cow
 Source0:        cow-1.0.tar.gz
