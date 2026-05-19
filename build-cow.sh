@@ -37,6 +37,7 @@ fi
 pushd "$bd/src"
 git archive --format=tar.gz --prefix=cow-1.0/ -o "../rpmbuild/SOURCES/cow-1.0.tar.gz" HEAD
 h=$(git rev-parse --short HEAD)
+m=$(git log --oneline --no-decorate -1)
 popd
 
 cp "$bd/logging.patch" "$bd/rpmbuild/SOURCES/"
@@ -49,7 +50,7 @@ sed -i "0,/%changelog/{/%changelog/a\
 
 }" "$bd/cow.spec"
 sed -i "0,/%changelog/{/%changelog/a\
-- Automated build from upstream git commit $h
+- $m
 }" "$bd/cow.spec"
 sed -i "0,/%changelog/{/%changelog/a\
 * $(date '+%a %b %d %Y') Martin Cermak <mcermak@redhat.com> - 1-0.$s.$h

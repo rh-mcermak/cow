@@ -22,6 +22,7 @@ BuildRequires: libxkbcommon-devel
 BuildRequires: meson
 BuildRequires: pango
 BuildRequires: pango-devel
+BuildRequires: scdoc
 BuildRequires: wayland-devel
 BuildRequires: wayland-protocols-devel
 BuildRequires: wlroots-devel
@@ -70,8 +71,22 @@ export CFLAGS="%{optflags} -Wno-error=format-security"
 %{_bindir}/cowident
 %{_sysconfdir}/cow/cow.conf
 %{_datadir}/wayland-sessions/cow.desktop
+%{_mandir}/man1/cow.1.gz
+%{_mandir}/man1/cowbar.1.gz
+%{_mandir}/man1/cowident.1.gz
+%{_mandir}/man1/cowpager.1.gz
+%{_mandir}/man1/moocow.1.gz
 
 %changelog
+* Tue May 19 2026 Martin Cermak <mcermak@redhat.com> - 1-0.9209518.117c16b
+- 117c16b cow.1: document scroll, retire page
+
+* Sun May 17 2026 Martin Cermak <mcermak@redhat.com> - 1-0.9045353.22dcde6
+- 22dcde6 PR37: Introduce raise_on_focus config setting
+
+* Thu May 14 2026 Martin Cermak <mcermak@redhat.com> - 1-0.8786759.7ef9f1e
+- 7ef9f1e PR35: Fix window resizing problem
+
 * Wed May 13 2026 Martin Cermak <mcermak@redhat.com> - 1-0.8701343.1871a5d
 - Automated build from upstream git commit 1871a5d
 
