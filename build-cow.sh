@@ -55,10 +55,11 @@ sed -i "0,/%changelog/{/%changelog/a\
 sed -i "0,/%changelog/{/%changelog/a\
 * $(date '+%a %b %d %Y') Martin Cermak <mcermak@redhat.com> - 1-0.$s.$h
 }" "$bd/cow.spec"
-sed -e "s/STAMP/$s/" -e "s/HASH/$h/" "$bd/cow.spec" > "$bd/rpmbuild/SPECS/cow.spec"
 
 # Edit the spec
-vim $bd/rpmbuild/SPECS/cow.spec || exit  # :cq
+vim $bd/cow.spec || exit  # :cq
+
+sed -e "s/STAMP/$s/" -e "s/HASH/$h/" "$bd/cow.spec" > "$bd/rpmbuild/SPECS/cow.spec"
 
 # Build SRPM
 pushd "$bd/rpmbuild/SPECS"

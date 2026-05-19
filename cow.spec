@@ -78,8 +78,9 @@ export CFLAGS="%{optflags} -Wno-error=format-security"
 %{_mandir}/man1/moocow.1.gz
 
 %changelog
-* Tue May 19 2026 Martin Cermak <mcermak@redhat.com> - 1-0.9209518.117c16b
+* Tue May 19 2026 Martin Cermak <mcermak@redhat.com> - 1-0.9220443.117c16b
 - 117c16b cow.1: document scroll, retire page
+- Add man pages to the package
 
 * Sun May 17 2026 Martin Cermak <mcermak@redhat.com> - 1-0.9045353.22dcde6
 - 22dcde6 PR37: Introduce raise_on_focus config setting
